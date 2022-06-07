@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>ColorVisNavigator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="public/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="public/stylesheets/style.css?3.0.15" rel="stylesheet">
+    <link href="public/stylesheets/myPagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="public/stylesheets/ion.rangeSlider.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NSVMXQL90D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-NSVMXQL90D');
+    </script>
+
+</head>
+
+
+<body>
+
+    <!--  libs -->
+
+
+    <!-- fixed-top (stay version) note that body: padding-top: 5rem; -->
+    <nav class="navbar navbar-expand-lg navbar-dark nav-bg-custom navbar-inverse fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <span class="orange-font">C</span><span class="black-font">olor</span><span
+                    class="orange-font">V</span><span class="black-font">IS</span><span
+                    class="orange-font">N</span><span class="black-font">avigator</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="getStarted.html">Getting started</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text active-custom" href="#">Explore</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link nav-text non-active-custom" href="updates.html">Updates</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <a id="back-to-top-button"></a>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-10">
+                <div class="form-group form-inline justify-content-center search-bar">
+
+                    <form class="form-inline justify-content-center">
+                        -&nbsp;<input type="range" id="image-size-slider" data-toggle="tooltip" data-html="true" title="change figure size" class="custom-range" value="25" min="12" max="100" />+
+                    </form>
+                    <img src="public/images/brick.png" class="mode-icon" id="image-mode" data-toggle="tooltip" data-html="true" title="Figure view"> &nbsp;&nbsp;
+                    <img src="public/images/card.png" class="mode-icon" id="card-mode" data-toggle="tooltip" data-html="true" title="Paper Card view"> &nbsp;&nbsp;
+                    <img src="public/images/list.png" class="mode-icon" id="paper-mode" data-toggle="tooltip" data-html="true" title="Paper view"> &nbsp;&nbsp;
+
+                    <!-- <div class="squaredThree">
+                        <input type="checkbox" name="captionCheck" id="caption-check" value="other">
+                        <label for="caption-check" id="caption-check-label" style="background-color: #fff; border: 1px solid #95a5a6;" ;></label> &nbsp;Show caption(s)
+                    </div> -->
+
+                </div>
+            </div>
+            <div class="col-1">
+                <div id="visitor-counts">
+                    Visitors: <span id="busuanzi_value_site_uv"></span>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-1">
+
+            </div>
+            <div class="col-10">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="conf-legend-div form-inline">
+                            <!-- <select id="authors"></select> -->
+                            <div class="squaredThree">
+                                <input type="checkbox" name="visOptions" id="vis-check" value="Vis" checked>
+                                <label for="vis-check" id="vis-check-label" style="background-color: #FBAF3F" ;></label> &nbsp;Vis
+                            </div>
+                            <div class="squaredThree">
+                                <input type="checkbox" name="visOptions" id="scivis-check" value="other" checked>
+                                <label for="scivis-check" id="scivis-check-label" style="background-color: #1B75BB;"></label> &nbsp;SciVis
+                            </div>
+                            <div class="squaredThree">
+                                <input type="checkbox" name="visOptions" id="infovis-check" value="other" checked>
+                                <label for="infovis-check" id="infovis-check-label" style="background-color: #EF4036;"></label> &nbsp;InfoVis
+                            </div>
+                            <div class="squaredThree">
+                                <input type="checkbox" name="visOptions" id="vast-check" value="other" checked>
+                                <label for="vast-check" id="vast-check-label" style="background-color: #38B449;"></label> &nbsp;VAST
+                            </div>
+                            <div id="year-slider" style="width: 24rem; padding-left: 40px; z-index: 5;">
+                                <input type="text" class="js-range-slider" name="my_range" value="" />
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="figure-type-div form-inline">
+                            Paper type(s):&nbsp;&nbsp;
+                            <div class="squaredThree">
+                                <input type="checkbox" name="figureOptions" id="conference-check" value="other" checked>
+                                <label for="conference-check" id="conference-check-label" style="background-color: #359bd7;" ;></label> &nbsp;Conference(s)
+                            </div>
+                            <div class="squaredThree">
+                                <input type="checkbox" name="figureOptions" id="journal-check" value="other" checked>
+                                <label for="journal-check" id="journal-check-label" style="background-color: #359bd7;" ;></label> &nbsp;Journal(s)
+                            </div>
+                        </div>
+
+                        <div class="rendering-type-div form-inline">
+                            Image Types:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="imageType" name="imageType" id="bw-check" value="bw">
+                                <label for="bw-check" id="bw-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="bw-icon" data-toggle="tooltip" data-html="true"
+                                        title="Black and white images" src="public/images/icons/bw-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="imageType" name="imageType" id="grayscale-check" value="grayscale">
+                                <label for="grayscale-check" id="grayscale-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="grayscale-icon" data-toggle="tooltip" data-html="true"
+                                        title="Gray scale images" src="public/images/icons/grayscale-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="imageType" name="imageType" id="colorful-check" value="colorful">
+                                <label for="colorful-check" id="colorful-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="colorful-icon" data-toggle="tooltip" data-html="true"
+                                        title="Images with color" src="public/images/icons/colorful-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            <div class="radioIcon">
+                                <input type="radio" class="encodingMode" name="encodingMode" id="encodingMode-union" value="union">
+                                <label for="encodingMode-union" id="encodingMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="encodingMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        
+                        <div class="rendering-type-div form-inline">
+                            Color usage:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="usageType" name="usageType" id="aesthetics-check" value="aesthetics">
+                                <label for="aesthetics-check" id="aesthetics-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="aesthetics-icon" data-toggle="tooltip" data-html="true"
+                                        title="Color used for aesthetics"
+                                        src="public/images/icons/aesthetics-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox"  class="usageType" name="usageType" id="data-visualization-check" value="data-visualization">
+                                <label for="data-visualization-check" id="data-visualization-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="data-visualization-icon" data-toggle="tooltip" data-html="true"
+                                        title="Color used for data visualization" src="public/images/icons/datavis-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            <div class="radioIcon">
+                                <input type="radio" class="encodingMode" name="encodingMode" id="encodingMode-union" value="union">
+                                <label for="encodingMode-union" id="encodingMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="encodingMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="rendering-type-div form-inline">
+                            Color legend:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="legendType" name="legendType" id="show-check" value="show">
+                                <label for="show-check" id="show-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="show-icon" data-toggle="tooltip"
+                                        data-html="true" title="Legend show"
+                                        src="public/images/icons/legendshow-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox" class="legendType" name="legendType" id="unshow-check" value="unshow">
+                                <label for="unshow-check" id="unshow-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="unshow-icon" data-toggle="tooltip" data-html="true"
+                                        title="Legend miss" src="public/images/icons/legendunshow-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            <div class="radioIcon">
+                                <input type="radio" class="encodingMode" name="encodingMode" id="encodingMode-union" value="union">
+                                <label for="encodingMode-union" id="encodingMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="encodingMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div class="rendering-type-div form-inline">
+                            Color mapping:&nbsp;&nbsp;
+                            <div class="codingType">
+                                <input type="checkbox" class="mapType" name="mapType" id="categorical-check" value="categorical">
+                                <label for="categorical-check" id="categorical-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="categorical-icon" data-toggle="tooltip" data-html="true"
+                                        title="Categorical color mapping" src="public/images/icons/categorical-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+
+                            <div class="codingType">
+                                <input type="checkbox" class="mapType" name="mapType" id="continuous-check" value="continuous">
+                                <label for="continuous-check" id="continuous-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="continuous-icon" data-toggle="tooltip" data-html="true"
+                                        title="Continuous color mapping"
+                                        src="public/images/icons/continuous-0.png" />
+                                </label> &nbsp;
+                            </div>
+                            <div class="codingType">
+                                <input type="checkbox"  class="mapType" name="mapType" id="others-check" value="others">
+                                <label for="others-check" id="others-check-label" class="unselected-flat">
+                                    <img class="coding-icon" id="others-icon" data-toggle="tooltip" data-html="true"
+                                        title="Others" src="public/images/icons/other-0.png" />
+                                </label> &nbsp;
+                            </div>
+
+                            <a id="helper-link" target="_blank" href="https://docs.google.com/document/d/1YlnYs5OHS0VflE6RAWdPX3lRm3iXnRQyo7RKfWrqoV0/edit">
+                                <button type="button" id="query-mode-box-union" class="btn btn-primary btn-circle btn-sm">?</button>
+                            </a> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+                            <div class="radioIcon">
+                                <input type="radio" class="encodingMode" name="encodingMode" id="encodingMode-union" value="union">
+                                <label for="encodingMode-union" id="encodingMode-union-label" class="selected-flat">
+                                    <img class="mode-icon" id="encodingMode-union-icon" data-toggle="tooltip"
+                                        data-html="true" title="union" src="public/images/icons/union-1.png" />
+                                </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+
+                        <div>  
+                            Color value numbers: &nbsp;
+                            <select class="selectpicker" id="color-number">
+                                <option value=""></option>
+                                <option value="1-4">1-4</option>
+                                <option value="5-10">5-10</option>
+                                <option value="11-20">11-20</option>
+                                <option value="20more">more than 20</option>
+
+                            </select>&nbsp;&nbsp;
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 gray-font" style="font-size:0.5rem;">
+                        © 2020 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective
+                        works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-1">
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- <select class="selectpicker">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+              </select> -->
+
+
+            <div id="pagination" class="pagination"></div>
+        </div>
+        <div class="container">
+
+
+
+        </div>
+
+        <div id="timeline-div" class="">
+            <!-- <button type="button" id="capture-papercard" class="btn btn-outline-secondary btn-sm">capture my journey!</button> -->
+            <!-- why there is a space between two inline divs: -->
+            <!-- https://stackoverflow.com/questions/19038799/why-is-there-an-unexplainable-gap-between-these-inline-block-div-elements -->
+            <div class="horizontal-timeline" id="horizontal-timeline-div">
+
+
+
+                <div class="opacity-overlay"></div>
+                <div class="timeline" id="timeline-container">
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="image-gallery" class="row text-center text-lg-left">
+
+        </div>
+        <!-- The Modal to show original img-->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <div class="container" style="width: 100%; height: 90%">
+                <div class="row" style="height: 95%;">
+                    <div class="col-md-8" style="height: 90%;">
+                        <div id="img-box">
+                            <div class="imageContainer magnify-img" id="vis-img-box">
+                                <img class="origin-img" id="ori-img" src="">
+                            </div>
+                        </div>
+
+
+                        <!-- <img class="modal-content" id="ori-img"> -->
+                        <!-- <div class="ori-img-container">
+                            
+                        </div> -->
+                    </div>
+                    <div class="col-md-4" style="height: 90%;">
+                        <div class="meta-info">
+                            <span class="blue-font">Paper: </span><span id="paper-info" class="caption"></span><br>
+                            <span class="blue-font">Author: </span><span id="author-info" class="caption"></span><br>
+                            <!-- <span class="blue-font">Journal: </span><span id="journal-info" class="caption">
+                                    IEEE Transactions on Visualization and Computer Graphics</span><br> -->
+                            <span class="blue-font">Year: </span><span id="year-info" class="caption"></span><br>
+                            <span class="blue-font">Paper URL : </span>
+                            <a id="link-info" class="caption" target="blank"></a><br>
+                            <span class="blue-font">Paper Type: </span><span id="paper-type-info" class="caption"></span><br>
+                            <span class="blue-font">Image Type: </span><span id="image-type-info" class="caption"></span><br>
+                            <span class="blue-font">Color Usage: </span><span id="color-usage" class="caption"></span><br>
+                            <span class="blue-font">Color Legend: </span><span id="color-legend" class="caption"></span><br>
+                            <span class="blue-font">Color Mapping: </span><span id="color-map" class="caption"></span><br>
+                            <span class="blue-font">Color Number: </span><span id="color-number-info" class="caption"></span><br>
+                            <span class="gray-font">Imagename: </span><span id="imagename-info" class="caption"></span><br>
+                            <a id="email-btn" href=""><button class="btn btn-secondary btn-sm">Update this
+                                    image</button></a>
+                            <!-- <input type="submit" class="btn btn-secondary btn-sm" id="mail-submit" value="Report Image Error"></button>
+                            <form id="send-mail-form" enctype="text/plain" action="mailto:chen.8028@osu.edu" method="GET">
+                                <input name="subject" id="mail-subject" type="text" />
+                                <input name="body" id="mail-body"></input>
+                                <input type="submit" class="btn btn-secondary btn-sm" id="mail-submit" value="Report Image Error"></button>
+                            </form> -->
+                        </div>
+                    </div>
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4">
+                        <button class="btn btn-light" style="left: 60%; position: relative;" id="modal-previous">
+                            < </button>
+
+                        <button class="btn btn-light" style="left: 60%; position: relative;" id="modal-next">></button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--        show other images-->
+            <div class="container">
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="container">-->
+    <!--    <div id="pagination" class="pagination"></div>-->
+    <!--</div>-->
+
+
+    <script src="public/lib/jquery-3.3.1.min.js"></script>
+    <script src="public/lib/d3.min.js"></script>
+    <script src="public/lib/d3-tip.js"></script>
+    <script src="public/lib/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="public/lib/underscore-min.js"></script>
+    <script src="public/lib/myPagination.js"></script>
+    <script src="public/lib/ion.rangeSlider.js"></script>
+    <script src="public/lib/jquery.mousewheel.min.js"></script>
+    <script src="public/lib/FileSaver.js"></script>
+    <script src="public/lib/lazysizes.min.js"></script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <script type="text/javascript" src="public/javascripts/constant.js?v3.0.3"></script>
+    <script type="text/javascript" src="public/javascripts/vis_global.js?v3.0.16"></script>
+    <script type="text/javascript" src="public/javascripts/utils.js?v3.0.1"></script>
+    <script type="text/javascript" src="public/javascripts/image_filter.js?v3.0.16"></script>
+    <script type="text/javascript" src="public/javascripts/vis_show_images.js?v3.1.0"></script>
+
+
+</body>
+
+</html>
