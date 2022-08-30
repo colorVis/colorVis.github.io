@@ -37,19 +37,17 @@ function filterDataByAuthors(data, author) {
  * @param {*} type 
  */
 function filterDataByimageType(data, type) {
-    console.log(type);
+   
     if (type.length == 0) {
         return data;
     }
     var filterData = data.filter(function(item) {
-        let isFlag = false;
-        if (parseInt(item['check_image_type']) == 1) {
+        let isFlag = false;   
             for (let i = 0; i < type.length; i++) {
-                if (item['image_type'].split(';').includes(type[i])) {
+                if (item['type'] == (type[i].split("-")[1])) {
                     isFlag = true;
                     break;
                 }
-            }
         }
         return isFlag;
     });
@@ -68,16 +66,24 @@ function filterDataBylegendType(data, type) {
     }
     var filterData = data.filter(function(item) {
         let isFlag = false;
-        if (parseInt(item['check_color_legend']) == 1) {
             for (let i = 0; i < type.length; i++) {
-                if (item['color_legend'].split(';').includes(type[i])) {
+                if (item['legend'].split(';').includes(type[i].split('-')[1])) {
                     isFlag = true;
                     break;
                 }
-            }
         }
         return isFlag;
     });
+    return filterData;
+}
+
+function getCompleteOnes(data){
+    var filterData = data.filter(function(item){
+        if(item["isComplete"] == "1"){
+            return true;
+        }
+        return false;
+    })
     return filterData;
 }
 
@@ -93,14 +99,13 @@ function filterDataBylegendType(data, type) {
     }
     var filterData = data.filter(function(item) {
         let isFlag = false;
-        if (parseInt(item['check_color_map']) == 1) {
             for (let i = 0; i < type.length; i++) {
-                if (item['color_map'].split(';').includes(type[i])) {
+                if (item['map'].split(';').includes(type[i].split('-')[1])) {
                     isFlag = true;
                     break;
                 }
             }
-        }
+    
         return isFlag;
     });
     return filterData;
@@ -130,37 +135,36 @@ function filterDataByusageType(data, type) {
     }
     var filterData = data.filter(function(item) {
         let isFlag = false;
-        if (parseInt(item['color_usage']) == 1) {
             for (let i = 0; i < type.length; i++) {
-                if (item['color_usage'].split(';').includes(type[i])) {
+                if (item['usage'].split(';').includes(type[i].split('-')[1])) {
                     isFlag = true;
                     break;
                 }
             }
-        }
+        
         return isFlag;
     });
     return filterData;
 }
 
-function filterDataByComposition(data, type) {
-    if (type.length == 0) {
-        return data;
-    }
-    var filterData = data.filter(function(item) {
-        let isFlag = false;
-        if (parseInt(item['check_comp_type']) == 1) {
-            for (let i = 0; i < type.length; i++) {
-                if (item['comp_type'].split(';').includes(type[i])) {
-                    isFlag = true;
-                    break;
-                }
-            }
-        }
-        return isFlag;
-    });
-    return filterData;
-}
+// function filterDataByComposition(data, type) {
+//     if (type.length == 0) {
+//         return data;
+//     }
+//     var filterData = data.filter(function(item) {
+//         let isFlag = false;
+//         if (parseInt(item['check_comp_type']) == 1) {
+//             for (let i = 0; i < type.length; i++) {
+//                 if (item['comp_type'].split(';').includes(type[i])) {
+//                     isFlag = true;
+//                     break;
+//                 }
+//             }
+//         }
+//         return isFlag;
+//     });
+//     return filterData;
+// }
 
 
 
@@ -242,7 +246,7 @@ function filterDataByYear(data, minYear, maxYear) {
  */
  function filterDataByNumber(data, minNum, maxNum) {
     var filterData = data.filter(function(item) {
-        return (parseInt(minNum) <= item['color_number']) & (item['color_number'] <= parseInt(maxNum));
+        return (parseInt(minNum) <= item['number']) & (item['number'] <= parseInt(maxNum));
     });
     return filterData;
 }

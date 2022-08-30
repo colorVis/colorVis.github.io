@@ -67,11 +67,13 @@ $(document).ready(function() {
  */
 async function dbStart() {
 
-    G_IMG_DATA = await d3.csv("./public/dataset/colorVispubData30_updated_3.0.8.csv");
+    G_IMG_DATA = await d3.csv("./public/dataset/Annotation.csv");
     G_PAPER = await d3.csv("./public/dataset/paperData_3.0.3.csv");
     //G_PAPER = stratifyPaperData(G_PAPER);
     console.log(G_IMG_DATA);
     G_IMG_DATA = sortImageByYear(G_IMG_DATA); //sort images by year, then sort by conference, the sort by first page.
+    G_IMG_DATA = getCompleteOnes(G_IMG_DATA);
+    console.log(G_IMG_DATA);
     //group images to paper dataset
     G_IMG_FULL_DATA = [...G_IMG_DATA];
     G_PAP_DATA = extractPaperData(G_IMG_FULL_DATA);
@@ -451,9 +453,11 @@ function filterData() {
     if (visMode == 1) {
 
         //1. filtering data by conference
-
-        var data = filterDataByConference(G_IMG_DATA, currentConferences);
-        data = filterDataByPaperType(data,currentPaperType);
+        var data = G_IMG_DATA;
+        //var data = filterDataByConference(G_IMG_DATA, currentConferences);
+        console.log(data);
+        //data = filterDataByPaperType(data,currentPaperType);
+        console.log(data);
         //2. filtering data by keywords, determine whether show year scent
         
         ifAllImage = 1;
@@ -465,14 +469,19 @@ function filterData() {
         data = filterDataByusageType(data, currentusageTypes);
         data = filterDataBylegendType(data, currentlegendTypes);
         data = filterDataBymapType(data,currentmapTypes);
+        console.log(data);
         //create the scent data
         countImageByYear(data);
 
         //5. filtering data by year
         let minYear = currentYearRange[0];
         let maxYear = currentYearRange[1];
+        console.log(minYear);
+        console.log(maxYear);
         data = filterDataByYear(data, minYear, maxYear);
+        console.log(data);
         data = filterDataByNumber(data,minColorNum,maxColorNum);
+        console.log(data);
         //6. reset year index dictionary
         resetYearIndexDic(data);
 
@@ -492,16 +501,19 @@ function filterData() {
         var currentData = data.slice(img_per_page * 0, img_per_page * 1);
         presentImg(currentData, 0, 0, 1, 0);
     } else if (visMode == 2) {
-
+     
         //1. filtering data by conference
-        var data = filterDataByConference(G_IMG_FULL_DATA, currentConferences);
-        data = filterDataByPaperType(data,currentPaperType);
+       
+        // var data = filterDataByConference(G_IMG_FULL_DATA, currentConferences);
+        
+       // data = filterDataByPaperType(data,currentPaperType);
+       
         //2. filtering data by keywords, determine whether show year scent
         
         ifAllImage = 1;
         
         //4. filtering data by figure type (figure or table)
-        data = filterDataByimageType(data, currentimageTypes);
+        var data = filterDataByimageType(G_IMG_DATA, currentimageTypes);
         data - filterDataByusageType(data, currentusageTypes);
         data = filterDataBylegendType(data, currentlegendTypes);
         data = filterDataBymapType(data, currentmapTypes);
@@ -536,7 +548,9 @@ function filterData() {
     } else if (visMode == 3) {
         //1. filtering data by conference
         var data = filterDataByConference(G_IMG_FULL_DATA, currentConferences);
+        console.log(data);
         data = filterDataByPaperType(data,currentPaperType);
+        console.log(data);
 
         //2. filtering data by keywords, determine whether show year scent
         

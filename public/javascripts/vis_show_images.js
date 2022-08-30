@@ -125,21 +125,21 @@ function presentImg(imgData, showAnnotation, sortedKey = 0, imgSize = 1, current
         } else {
             $('#ori-img').attr('class', 'origin-img-tall');
         }
-        paper_info.innerHTML = imgData[id]['paper_title'];
-        author_info.innerHTML = imgData[id]['paper_author'].replace(/;/g, '; ');
-        link_info.href = imgData[id]['paper_url'];
-        link_info.innerHTML = imgData[id]['paper_url'].toString();
+        // paper_info.innerHTML = imgData[id]['paper_title'];
+        // author_info.innerHTML = imgData[id]['paper_author'].replace(/;/g, '; ');
+        // link_info.href = imgData[id]['paper_url'];
+        // link_info.innerHTML = imgData[id]['paper_url'].toString();
         year_info.innerHTML = imgData[id]['year'];
-        type_info.innerHTML = imgTagDic[imgData[id]['paper_type']];
+        type_info.innerHTML = imgTagDic["type-"+imgData[id]['paper_type']];
         
-        imtype_info.innerHTML = imgTagDic[imgData[id]['image_type']];
-        color_usage.innerHTML = imgTagDic[imgData[id]['color_usage']];
-        color_legend.innerHTML = imgTagDic[imgData[id]['color_legend']];
-        color_mapping.innerHTML = imgTagDic[imgData[id]['color_map']];
-        if(imgData[id]['color_number'] < 0)
+        imtype_info.innerHTML = imgTagDic["type-"+imgData[id]['type']];
+        color_usage.innerHTML = imgTagDic["usage-"+imgData[id]['usage']];
+        color_legend.innerHTML = imgTagDic["legend-"+imgData[id]['legend']];
+        color_mapping.innerHTML = imgTagDic["map-"+imgData[id]['map']];
+        if(imgData[id]['number'] < 0)
             color_number.innerHTML = "cannot tell";
         else
-            color_number.innerHTML = imgData[id]['color_number'].toString();
+            color_number.innerHTML = imgData[id]['number'].toString();
         let urlArr = imgData[id].url.split('/');
         imagename_info.innerHTML = urlArr[urlArr.length - 1];
         //set email content
@@ -198,10 +198,10 @@ function presentImg(imgData, showAnnotation, sortedKey = 0, imgSize = 1, current
         link_info.innerHTML = imgData[gIndex]['paper_url'];
         year_info.innerHTML = imgData[gIndex]['year'];
         type_info.innerHTML = imgTagDic[imgData[gIndex]['paper_type']];
-        imtype_info.innerHTML = imgTagDic[imgData[gIndex]['image_type']];
-        color_usage.innerHTML = imgTagDic[imgData[gIndex]['color_usage']];
-        color_legend.innerHTML = imgTagDic[imgData[gIndex]['color_legend']];
-        color_mapping.innerHTML = imgTagDic[imgData[gIndex]['color_map']];
+        imtype_info.innerHTML = imgTagDic["type-"+imgData[gIndex]['type']];
+        color_usage.innerHTML = imgTagDic["usage-"+imgData[gIndex]['usage']];
+        color_legend.innerHTML = imgTagDic["legend-"+imgData[gIndex]['legend']];
+        color_mapping.innerHTML = imgTagDic["map-"+imgData[gIndex]['map']];
         if(imgData[gIndex]['color_number'] < 0)
             color_number.innerHTML = "cannot tell";
         else
@@ -410,7 +410,7 @@ function presentPaperCards(paperData, totalCount) {
 
     years.forEach((year) => {
 
-        //console.log(year);
+        console.log(year);
 
         //determine how many conferences in each year
         let conferences = paperData[year].map(item => item.conference)
@@ -792,11 +792,11 @@ function presentUPPapers(paperData, totalCount) {
         link_info.href = imgDataDic[id]['paper_url'];
         link_info.innerHTML = imgDataDic[id]['paper_url'];
         year_info.innerHTML = imgDataDic[id]['year'];
-        type_info.innerHTML =imgTagDic[imgDataDic[id]['paper_type']];
-        imtype_info.innerHTML = imgTagDic[imgDataDic[id]['image_type']];
-        color_usage.innerHTML = imgTagDic[imgDataDic[id]['color_usage']];
-        color_legend.innerHTML = imgTagDic[imgDataDic[id]['color_legend']];
-        color_mapping.innerHTML = imgTagDic[imgDataDic[id]['color_map']];
+        type_info.innerHTML =imgTagDic["type_"+imgDataDic[id]['paper_type']];
+        imtype_info.innerHTML = imgTagDic["type-"+imgDataDic[id]['type']];
+        color_usage.innerHTML = imgTagDic["usage-"+imgDataDic[id]['usage']];
+        color_legend.innerHTML = imgTagDic["legend-"+imgDataDic[id]['legend']];
+        color_mapping.innerHTML = imgTagDic["map-"+imgDataDic[id]['map']];
         
         
         if(imgDataDic[id]['color_number'] <0)
@@ -861,11 +861,11 @@ function presentUPPapers(paperData, totalCount) {
         link_info.innerHTML = paperImgData[gIndex]['paper_url'];
         year_info.innerHTML = paperImgData[gIndex]['year'];
         type_info.innerHTML = paperImgData[gIndex]['paper_type'];
-        imtype_info.innerHTML = imgTagDic[paperImgData[gIndex]['image_type']];
-        color_usage.innerHTML = imgTagDic[paperImgData[gIndex]['color_usage']];
-        color_legend.innerHTML = imgTagDic[paperImgData[gIndex]['color_legend']];
-        color_mapping.innerHTML = imgTagDic[paperImgData[gIndex]['color_map']];
-        if(paperImgData[gIndex]['color_number']<0)
+        imtype_info.innerHTML = imgTagDic["type-"+paperImgData[gIndex]['type']];
+        color_usage.innerHTML = imgTagDic["usage-"+paperImgData[gIndex]['usage']];
+        color_legend.innerHTML = imgTagDic["legend-"+paperImgData[gIndex]['legend']];
+        color_mapping.innerHTML = imgTagDic["map-"+paperImgData[gIndex]['map']];
+        if(paperImgData[gIndex]['number']<0)
         color_number.innerHTML = "cannot tell";
         else
         color_number.innerHTML = paperImgData[gIndex]['color_number'];
